@@ -1,18 +1,18 @@
-import { create } from 'zustand'
-import type { Room, Message } from '@/types'
+import { create } from "zustand";
+import type { Room, Message } from "@/types";
 
 interface ChatState {
-  rooms: Room[]
-  activeRoomId: string | null
-  messages: Record<string, Message[]>   // keyed by roomId
-  typingUsers: Record<string, string[]> // roomId → usernames
+  rooms: Room[];
+  activeRoomId: string | null;
+  messages: Record<string, Message[]>; // keyed by roomId
+  typingUsers: Record<string, string[]>; // roomId → usernames
 
-  setRooms: (rooms: Room[]) => void
-  addRoom: (room: Room) => void
-  setActiveRoom: (roomId: string) => void
-  setMessages: (roomId: string, messages: Message[]) => void
-  addMessage: (message: Message) => void
-  setTyping: (roomId: string, username: string, isTyping: boolean) => void
+  setRooms: (rooms: Room[]) => void;
+  addRoom: (room: Room) => void;
+  setActiveRoom: (roomId: string) => void;
+  setMessages: (roomId: string, messages: Message[]) => void;
+  addMessage: (message: Message) => void;
+  setTyping: (roomId: string, username: string, isTyping: boolean) => void;
 }
 
 export const useChatStore = create<ChatState>((set) => ({
@@ -23,8 +23,7 @@ export const useChatStore = create<ChatState>((set) => ({
 
   setRooms: (rooms) => set({ rooms }),
 
-  addRoom: (room) =>
-    set((s) => ({ rooms: [...s.rooms, room] })),
+  addRoom: (room) => set((s) => ({ rooms: [...s.rooms, room] })),
 
   setActiveRoom: (roomId) => set({ activeRoomId: roomId }),
 
@@ -33,16 +32,18 @@ export const useChatStore = create<ChatState>((set) => ({
 
   addMessage: (message) =>
     set((s) => {
-      const prev = s.messages[message.room] ?? []
-      return { messages: { ...s.messages, [message.room]: [...prev, message] } }
+      const prev = s.messages[message.room] ?? [];
+      return {
+        messages: { ...s.messages, [message.room]: [...prev, message] },
+      };
     }),
 
   setTyping: (roomId, username, isTyping) =>
     set((s) => {
-      const current = s.typingUsers[roomId] ?? []
+      const current = s.typingUsers[roomId] ?? [];
       const updated = isTyping
         ? Array.from(new Set([...current, username]))
-        : current.filter((u) => u !== username)
-      return { typingUsers: { ...s.typingUsers, [roomId]: updated } }
+        : current.filter((u) => u !== username);
+      return { typingUsers: { ...s.typingUsers, [roomId]: updated } };
     }),
-}))
+}));

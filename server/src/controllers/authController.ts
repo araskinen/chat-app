@@ -10,11 +10,17 @@ function signToken(userId: string) {
   } as jwt.SignOptions);
 }
 
-export async function register(req: Request, res: Response, next: NextFunction) {
+export async function register(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   try {
     const { username, email, password } = req.body as Record<string, string>;
     if (!username || !email || !password) {
-      res.status(400).json({ message: "username, email and password are required" });
+      res
+        .status(400)
+        .json({ message: "username, email and password are required" });
       return;
     }
     const existing = await User.findOne({ $or: [{ email }, { username }] });

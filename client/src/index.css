@@ -1,5 +1,21 @@
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
-button { font-family: inherit; }
-textarea { font-family: inherit; }
-input { font-family: inherit; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+button {
+  font-family: inherit;
+}
+textarea {
+  font-family: inherit;
+}
+input {
+  font-family: inherit;
+}
