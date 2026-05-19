@@ -1,18 +1,30 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthForms } from '@/components/auth/AuthForms'
-import { ChatPage } from '@/pages/ChatPage'
-import { useAuthStore } from '@/store/authStore'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthForms } from "@/components/auth/AuthForms";
+import { ChatPage } from "@/pages/ChatPage";
+import { useAuthStore } from "@/store/authStore";
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const token = useAuthStore((s) => s.token)
-  return token ? <>{children}</> : <Navigate to="/login" replace />
+  const token = useAuthStore((s) => s.token);
+  return token ? <>{children}</> : <Navigate to="/login" replace />;
+}
+
+function PublicRoute({ children }: { children: React.ReactNode }) {
+  const token = useAuthStore((s) => s.token);
+  return token ? <Navigate to="/" replace /> : <>{children}</>;
 }
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<AuthForms />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <AuthForms />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/"
           element={
@@ -24,5 +36,5 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
