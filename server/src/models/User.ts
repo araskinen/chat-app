@@ -33,7 +33,7 @@ userSchema.methods.comparePassword = function (candidate: string) {
 
 // Never return password in JSON responses
 userSchema.set('toJSON', {
-  transform: (_doc, ret) => { delete ret.password; return ret },
+  transform: (_doc, ret) => { delete (ret as { password?: string }).password; return ret },
 })
 
 export const User = model<IUser>('User', userSchema)
