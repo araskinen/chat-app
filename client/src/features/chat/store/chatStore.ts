@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Room, Message } from "@/types";
+import type { Room, Message } from "@/shared/types";
 
 interface ChatState {
   rooms: Room[];

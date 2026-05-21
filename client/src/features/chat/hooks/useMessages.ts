@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from "react";
-import { messagesApi, getErrorMessage } from "@/services/api";
-import { getSocket } from "@/services/socket";
-import { useChatStore } from "@/store/chatStore";
+import { messagesApi, getErrorMessage } from "@/shared/services/api";
+import { getSocket } from "@/shared/services/socket";
+import { useChatStore } from "@/features/chat/store/chatStore";
 
 const TYPING_DEBOUNCE_MS = 1500;
 

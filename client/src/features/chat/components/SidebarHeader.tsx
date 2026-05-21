@@ -1,4 +1,4 @@
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 export const SidebarHeader = () => {
   const user = useAuthStore((s) => s.user);

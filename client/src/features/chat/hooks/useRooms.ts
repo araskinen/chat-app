@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useChatStore } from "@/store/chatStore";
-import { roomsApi, getErrorMessage } from "@/services/api";
-import { getSocket } from "@/services/socket";
+import { useChatStore } from "@/features/chat/store/chatStore";
+import { roomsApi, getErrorMessage } from "@/shared/services/api";
+import { getSocket } from "@/shared/services/socket";
 
 export const useRooms = () => {
   const { rooms, activeRoomId, setRooms, addRoom, setActiveRoom } =

@@ -1,5 +1,5 @@
-import type { Message } from "@/types";
-import { useAuthStore } from "@/store/authStore";
+import type { Message } from "@/shared/types";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 interface Props {
   message: Message;

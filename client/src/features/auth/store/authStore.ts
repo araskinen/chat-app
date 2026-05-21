@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { User, LoginPayload, RegisterPayload } from "@/types";
-import { authApi, getErrorMessage } from "@/services/api";
-import { connectSocket, disconnectSocket } from "@/services/socket";
+import type { User, LoginPayload, RegisterPayload } from "@/shared/types";
+import { authApi, getErrorMessage } from "@/shared/services/api";
+import { connectSocket, disconnectSocket } from "@/shared/services/socket";
 
 interface AuthState {
   user: User | null;

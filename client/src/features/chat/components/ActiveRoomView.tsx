@@ -1,5 +1,5 @@
-import { useChatStore } from "@/store/chatStore";
-import { useMessages } from "@/hooks/useMessages";
+import { useChatStore } from "@/features/chat/store/chatStore";
+import { useMessages } from "@/features/chat/hooks/useMessages";
 import { RoomHeader } from "./RoomHeader";
 import { MessageList } from "./MessageList";
 import { MessageInput } from "./MessageInput";

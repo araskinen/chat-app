@@ -1,4 +1,4 @@
-import { useAuthForm } from "@/hooks/useAuthForm";
+import { useAuthForm } from "@/features/auth/hooks/useAuthForm";
 import { AuthHeader } from "./AuthHeader";
 import { FormField } from "./FormField";
 import { AuthModeToggle } from "./AuthModeToggle";

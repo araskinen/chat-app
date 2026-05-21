@@ -1,4 +1,4 @@
-import { useRooms } from "@/hooks/useRooms";
+import { useRooms } from "@/features/chat/hooks/useRooms";
 import { SidebarHeader } from "./SidebarHeader";
 import { RoomList } from "./RoomList";
 import { CreateRoomForm } from "./CreateRoomForm";

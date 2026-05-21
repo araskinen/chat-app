@@ -3,7 +3,7 @@ import { io, Socket } from "socket.io-client";
 // ─── Typed event maps ────────────────────────────────────────────────────────
 
 export interface ServerToClientEvents {
-  "message:new": (message: import("@/types").Message) => void;
+  "message:new": (message: import("@/shared/types").Message) => void;
   "user:typing": (payload: { username: string; roomId: string }) => void;
   "user:stopped-typing": (payload: {
     username: string;

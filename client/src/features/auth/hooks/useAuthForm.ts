@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 export const useAuthForm = () => {
   const [mode, setMode] = useState<"login" | "register">("login");

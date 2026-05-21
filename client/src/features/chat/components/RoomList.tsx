@@ -1,4 +1,4 @@
-import type { Room } from "@/types";
+import type { Room } from "@/shared/types";
 import { RoomItem } from "./RoomItem";
 
 interface Props {

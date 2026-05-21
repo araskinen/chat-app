@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { getSocket } from "@/services/socket";
-import { useChatStore } from "@/store/chatStore";
+import { getSocket } from "@/shared/services/socket";
+import { useChatStore } from "@/features/chat/store/chatStore";
 
 /**
  * Registers all Socket.IO event listeners and keeps the Zustand chat store

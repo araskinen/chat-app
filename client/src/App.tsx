@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthForms } from "@/components/auth/AuthForms";
+import { AuthForms } from "@/features/auth/components/AuthForms";
 import { ChatPage } from "@/pages/ChatPage";
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const token = useAuthStore((s) => s.token);
