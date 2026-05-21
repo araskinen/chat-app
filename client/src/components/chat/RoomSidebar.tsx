@@ -10,13 +10,13 @@ interface Props {
   error?: string | null;
 }
 
-export function RoomSidebar({
+export const RoomSidebar = ({
   rooms,
   activeRoomId,
   onSelectRoom,
   onCreateRoom,
   error,
-}: Props) {
+}: Props) => {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
   const [creating, setCreating] = useState(false);

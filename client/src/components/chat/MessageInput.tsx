@@ -6,7 +6,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export function MessageInput({ onSend, onTyping, disabled }: Props) {
+export const MessageInput = ({ onSend, onTyping, disabled }: Props) => {
   const [value, setValue] = useState("");
 
   const submit = () => {

@@ -26,7 +26,7 @@ export interface ClientToServerEvents {
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents> | null = null;
 
-export function getSocket() {
+export const getSocket = () => {
   if (!socket) {
     socket = io(import.meta.env.VITE_SOCKET_URL, {
       autoConnect: false,
@@ -36,14 +36,14 @@ export function getSocket() {
   return socket;
 }
 
-export function connectSocket(token: string) {
+export const connectSocket = (token: string) => {
   const s = getSocket();
   s.auth = { token };
   if (!s.connected) s.connect();
   return s;
 }
 
-export function disconnectSocket() {
+export const disconnectSocket = () => {
   socket?.disconnect();
   socket = null;
 }

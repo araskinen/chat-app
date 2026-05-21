@@ -8,7 +8,7 @@ import { useChatStore } from "@/store/chatStore";
 import { roomsApi, getErrorMessage } from "@/services/api";
 import { getSocket } from "@/services/socket";
 
-export function ChatPage() {
+export const ChatPage = () => {
   useSocket();
 
   const { rooms, activeRoomId, setRooms, addRoom, setActiveRoom } =

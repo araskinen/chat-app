@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 
-export function AuthForms() {
+export const AuthForms = () => {
   const [mode, setMode] = useState<"login" | "register">("login");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

@@ -5,7 +5,7 @@ import { useChatStore } from "@/store/chatStore";
 
 const TYPING_DEBOUNCE_MS = 1500;
 
-export function useMessages(roomId: string | null) {
+export const useMessages = (roomId: string | null) => {
   const messages = useChatStore((s) =>
     roomId ? (s.messages[roomId] ?? []) : [],
   );

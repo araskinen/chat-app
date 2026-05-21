@@ -3,17 +3,17 @@ import { AuthForms } from "@/components/auth/AuthForms";
 import { ChatPage } from "@/pages/ChatPage";
 import { useAuthStore } from "@/store/authStore";
 
-function PrivateRoute({ children }: { children: React.ReactNode }) {
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const token = useAuthStore((s) => s.token);
   return token ? <>{children}</> : <Navigate to="/login" replace />;
-}
+};
 
-function PublicRoute({ children }: { children: React.ReactNode }) {
+const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const token = useAuthStore((s) => s.token);
   return token ? <Navigate to="/" replace /> : <>{children}</>;
-}
+};
 
-export default function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -37,4 +37,6 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
+
+export default App;

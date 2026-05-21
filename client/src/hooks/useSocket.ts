@@ -6,7 +6,7 @@ import { useChatStore } from "@/store/chatStore";
  * Registers all Socket.IO event listeners and keeps the Zustand chat store
  * in sync. Mount once at the top of the authenticated layout.
  */
-export function useSocket() {
+export const useSocket = () => {
   const addMessage = useChatStore((s) => s.addMessage);
   const setTyping = useChatStore((s) => s.setTyping);
 

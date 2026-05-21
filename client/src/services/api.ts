@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function getErrorMessage(err: unknown, fallback: string): string {
+export const getErrorMessage = (err: unknown, fallback: string): string => {
   if (axios.isAxiosError(err)) {
     const serverMsg = (err.response?.data as { message?: string })?.message;
     return serverMsg ?? err.message;

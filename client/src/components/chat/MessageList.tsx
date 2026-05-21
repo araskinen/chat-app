@@ -7,7 +7,7 @@ interface Props {
   typingUsers: string[];
 }
 
-export function MessageList({ messages, typingUsers }: Props) {
+export const MessageList = ({ messages, typingUsers }: Props) => {
   const currentUser = useAuthStore((s) => s.user);
   const bottomRef = useRef<HTMLDivElement>(null);
 
