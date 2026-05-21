@@ -4,25 +4,25 @@ Full-stack real-time chat application built with React, Node.js, Socket.IO, and 
 
 ## Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18 + Vite + TypeScript |
-| State | Zustand |
-| Real-time | Socket.IO client |
-| Backend | Node.js + Express + TypeScript |
-| Real-time server | Socket.IO server |
-| Auth | JWT + bcrypt |
-| Database | MongoDB + Mongoose |
-| Cache / Pub-Sub | Redis (Upstash) |
+| Layer            | Technology                     |
+| ---------------- | ------------------------------ |
+| Frontend         | React 18 + Vite + TypeScript   |
+| State            | Zustand                        |
+| Real-time        | Socket.IO client               |
+| Backend          | Node.js + Express + TypeScript |
+| Real-time server | Socket.IO server               |
+| Auth             | JWT + bcrypt                   |
+| Database         | MongoDB + Mongoose             |
+| Cache / Pub-Sub  | Redis (Upstash)                |
 
 ## Free deployment targets
 
-| Service | Role |
-|---------|------|
-| Vercel | React SPA |
-| Railway | Node.js API + Socket.IO |
-| MongoDB Atlas M0 | Database (512 MB free) |
-| Upstash Redis | Redis (10k cmds/day free) |
+| Service          | Role                      |
+| ---------------- | ------------------------- |
+| Vercel           | React SPA                 |
+| Railway          | Node.js API + Socket.IO   |
+| MongoDB Atlas M0 | Database (512 MB free)    |
+| Upstash Redis    | Redis (10k cmds/day free) |
 
 ## Project structure
 
