@@ -24,7 +24,7 @@ export const MessageInput = ({ onSend, onTyping, disabled }: Props) => {
   };
 
   return (
-    <div className="flex gap-2 px-4 py-3 border-t border-[#e5e5e5]">
+    <div className="flex gap-2 px-4 py-3 border-t border-line">
       <textarea
         value={value}
         onChange={(e) => {
@@ -35,7 +35,7 @@ export const MessageInput = ({ onSend, onTyping, disabled }: Props) => {
         disabled={disabled}
         placeholder="Type a message… (Enter to send)"
         rows={1}
-        className="flex-1 px-3 py-2 rounded-lg border border-[#ddd] resize-none text-sm leading-normal"
+        className="flex-1 px-3 py-2 rounded-lg border border-dim resize-none text-sm leading-normal"
       />
       <SendButton onClick={submit} disabled={disabled || !value.trim()} />
     </div>

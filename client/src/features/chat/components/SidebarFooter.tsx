@@ -4,10 +4,10 @@ export const SidebarFooter = () => {
   const logout = useAuthStore((s) => s.logout);
 
   return (
-    <div className="p-3 border-t border-[#444]">
+    <div className="p-3 border-t border-sidebar-border">
       <button
         onClick={logout}
-        className="w-full p-2 rounded-md border-none bg-[#3d3d3a] text-[#aaa] cursor-pointer text-[13px]"
+        className="w-full p-2 rounded-md border-none bg-sidebar-input text-faint cursor-pointer text-2xs"
       >
         Sign out
       </button>

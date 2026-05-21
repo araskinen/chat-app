@@ -1,1 +1,38 @@
 @import "tailwindcss";
+
+@theme {
+  /* Light UI */
+  --color-surface: #f5f5f3;
+  --color-line: #e5e5e5;
+  --color-dim: #ddd;
+  --color-ink: #222;
+  --color-subtle: #555;
+  --color-muted: #888;
+  --color-faint: #aaa;
+
+  /* Brand */
+  --color-brand: #534ab7;
+  --color-brand-light: #7f77dd;
+  --color-brand-active: #3c3489;
+
+  /* Sidebar (dark) */
+  --color-sidebar: #2c2c2a;
+  --color-sidebar-border: #444;
+  --color-sidebar-text: #d3d1c7;
+  --color-sidebar-muted: #b4b2a9;
+  --color-sidebar-input: #3d3d3a;
+
+  /* Messages */
+  --color-message-bg: #f0f0f0;
+
+  /* Errors */
+  --color-error-surface: #fcebeb;
+  --color-error-border: #f5c6c6;
+  --color-error: #a32d2d;
+
+  --text-3xs: 0.6875rem;
+  --text-2xs: 0.8125rem;
+  --text-title: 1.375rem;
+
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
+}

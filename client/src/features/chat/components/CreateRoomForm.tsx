@@ -16,7 +16,7 @@ export const CreateRoomForm = ({ onCreateRoom }: Props) => {
   };
 
   return (
-    <div className="p-3 border-t border-[#444]">
+    <div className="p-3 border-t border-sidebar-border">
       {creating ? (
         <div className="flex gap-1.5">
           <input
@@ -28,11 +28,11 @@ export const CreateRoomForm = ({ onCreateRoom }: Props) => {
               if (e.key === "Escape") setCreating(false);
             }}
             placeholder="Room name"
-            className="flex-1 px-2 py-[0.4rem] rounded-md border border-[#555] bg-[#3d3d3a] text-white text-[13px]"
+            className="flex-1 px-2 py-1.5 rounded-md border border-subtle bg-sidebar-input text-white text-2xs"
           />
           <button
             onClick={handleCreate}
-            className="px-[0.6rem] py-[0.4rem] rounded-md border-none bg-[#534AB7] text-white cursor-pointer text-[13px]"
+            className="px-2.5 py-1.5 rounded-md border-none bg-brand text-white cursor-pointer text-2xs"
           >
             +
           </button>
@@ -40,7 +40,7 @@ export const CreateRoomForm = ({ onCreateRoom }: Props) => {
       ) : (
         <button
           onClick={() => setCreating(true)}
-          className="w-full p-2 rounded-md border border-dashed border-[#555] bg-transparent text-[#888] cursor-pointer text-[13px]"
+          className="w-full p-2 rounded-md border border-dashed border-subtle bg-transparent text-muted cursor-pointer text-2xs"
         >
           + New room
         </button>

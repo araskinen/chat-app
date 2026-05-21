@@ -4,11 +4,11 @@ interface Props {
 }
 
 export const AuthModeToggle = ({ mode, onToggle }: Props) => (
-  <p className="text-center mt-5 text-[13px] text-[#888]">
+  <p className="text-center mt-5 text-2xs text-muted">
     {mode === "login" ? "Don't have an account? " : "Already have an account? "}
     <button
       onClick={onToggle}
-      className="bg-transparent border-none text-[#534AB7] cursor-pointer font-medium text-[13px]"
+      className="bg-transparent border-none text-brand cursor-pointer font-medium text-2xs"
     >
       {mode === "login" ? "Sign up" : "Sign in"}
     </button>

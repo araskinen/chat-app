@@ -9,7 +9,7 @@ interface Props {
 
 export const RoomList = ({ rooms, activeRoomId, onSelectRoom }: Props) => (
   <div className="flex-1 overflow-y-auto py-2">
-    <div className="px-4 py-2 text-[11px] font-semibold text-[#888] uppercase tracking-[1px]">
+    <div className="px-4 py-2 text-3xs font-semibold text-muted uppercase tracking-[1px]">
       Rooms
     </div>
     {rooms.map((room) => (

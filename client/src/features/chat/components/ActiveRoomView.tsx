@@ -14,7 +14,7 @@ export const ActiveRoomView = () => {
 
   if (!activeRoom) {
     return (
-      <div className="flex-1 flex items-center justify-center text-[#aaa] text-[15px]">
+      <div className="flex-1 flex items-center justify-center text-faint text-[15px]">
         Select a room to start chatting
       </div>
     );

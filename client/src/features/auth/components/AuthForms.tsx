@@ -20,8 +20,8 @@ export const AuthForms = () => {
   } = useAuthForm();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f5f3]">
-      <div className="w-[360px] bg-white rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
+    <div className="min-h-screen flex items-center justify-center bg-surface">
+      <div className="w-[360px] bg-white rounded-2xl p-8 shadow-card">
         <AuthHeader mode={mode} />
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -46,7 +46,7 @@ export const AuthForms = () => {
           />
 
           {error && (
-            <div className="px-3 py-2 bg-[#FCEBEB] text-[#A32D2D] rounded-lg text-[13px]">
+            <div className="px-3 py-2 bg-error-surface text-error rounded-lg text-2xs">
               {error}
             </div>
           )}
@@ -54,7 +54,7 @@ export const AuthForms = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="py-[0.7rem] rounded-lg border-none bg-[#534AB7] text-white font-medium text-[15px] cursor-pointer mt-1"
+            className="py-3 rounded-lg border-none bg-brand text-white font-medium text-[15px] cursor-pointer mt-1"
           >
             {submitLabel}
           </button>

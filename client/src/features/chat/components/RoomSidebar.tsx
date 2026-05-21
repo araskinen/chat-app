@@ -13,11 +13,11 @@ export const RoomSidebar = () => {
     handleCreateRoom,
   } = useRooms();
   return (
-    <aside className="w-60 bg-[#2C2C2A] text-[#D3D1C7] flex flex-col shrink-0">
+    <aside className="w-60 bg-sidebar text-sidebar-text flex flex-col shrink-0">
       <SidebarHeader />
 
       {roomsError && (
-        <div className="px-4 py-2 bg-red-900/40 text-red-300 text-[12px]">
+        <div className="px-4 py-2 bg-red-900/40 text-red-300 text-xs">
           {roomsError}
         </div>
       )}

@@ -7,17 +7,17 @@ interface Props {
 
 export const RoomHeader = ({ room, error }: Props) => (
   <>
-    <div className="px-4 py-3 border-b border-[#e5e5e5] font-medium">
+    <div className="px-4 py-3 border-b border-line font-medium">
       # {room.name}
       {room.description && (
-        <span className="font-normal text-[13px] text-[#888] ml-2">
+        <span className="font-normal text-2xs text-muted ml-2">
           — {room.description}
         </span>
       )}
     </div>
 
     {error && (
-      <div className="px-4 py-2 bg-[#FCEBEB] text-[#A32D2D] text-sm border-b border-[#f5c6c6]">
+      <div className="px-4 py-2 bg-error-surface text-error text-sm border-b border-error-border">
         {error}
       </div>
     )}
