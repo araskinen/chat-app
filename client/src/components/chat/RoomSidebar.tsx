@@ -7,6 +7,7 @@ interface Props {
   activeRoomId: string | null;
   onSelectRoom: (roomId: string) => void;
   onCreateRoom: (name: string, description?: string) => void;
+  error?: string | null;
 }
 
 export function RoomSidebar({
@@ -14,6 +15,7 @@ export function RoomSidebar({
   activeRoomId,
   onSelectRoom,
   onCreateRoom,
+  error,
 }: Props) {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
@@ -28,65 +30,40 @@ export function RoomSidebar({
   };
 
   return (
-    <aside
-      style={{
-        width: 240,
-        background: "#2C2C2A",
-        color: "#D3D1C7",
-        display: "flex",
-        flexDirection: "column",
-        flexShrink: 0,
-      }}
-    >
-      {/* Header */}
-      <div style={{ padding: "1rem", borderBottom: "1px solid #444" }}>
-        <div style={{ fontWeight: 600, fontSize: 15, color: "#fff" }}>
-          💬 ChatApp
-        </div>
-        <div style={{ fontSize: 12, color: "#888", marginTop: 2 }}>
-          @{user?.username}
-        </div>
+    <aside className="w-60 bg-[#2C2C2A] text-[#D3D1C7] flex flex-col shrink-0">
+      <div className="p-4 border-b border-[#444]">
+        <div className="font-semibold text-[15px] text-white">💬 ChatApp</div>
+        <div className="text-xs text-[#888] mt-0.5">@{user?.username}</div>
       </div>
 
-      {/* Room list */}
-      <div style={{ flex: 1, overflowY: "auto", padding: "0.5rem 0" }}>
-        <div
-          style={{
-            padding: "0.5rem 1rem",
-            fontSize: 11,
-            fontWeight: 600,
-            color: "#888",
-            textTransform: "uppercase",
-            letterSpacing: 1,
-          }}
-        >
+      {error && (
+        <div className="px-4 py-2 bg-red-900/40 text-red-300 text-[12px]">
+          {error}
+        </div>
+      )}
+
+      <div className="flex-1 overflow-y-auto py-2">
+        <div className="px-4 py-2 text-[11px] font-semibold text-[#888] uppercase tracking-[1px]">
           Rooms
         </div>
         {rooms.map((room) => (
           <button
             key={room._id}
             onClick={() => onSelectRoom(room._id)}
-            style={{
-              width: "100%",
-              textAlign: "left",
-              padding: "0.5rem 1rem",
-              background: activeRoomId === room._id ? "#3C3489" : "transparent",
-              border: "none",
-              color: activeRoomId === room._id ? "#fff" : "#B4B2A9",
-              cursor: "pointer",
-              fontSize: 14,
-              borderRadius: 0,
-            }}
+            className={`w-full text-left px-4 py-2 border-none cursor-pointer text-sm rounded-none ${
+              activeRoomId === room._id
+                ? "bg-[#3C3489] text-white"
+                : "bg-transparent text-[#B4B2A9]"
+            }`}
           >
             # {room.name}
           </button>
         ))}
       </div>
 
-      {/* Create room */}
-      <div style={{ padding: "0.75rem", borderTop: "1px solid #444" }}>
+      <div className="p-3 border-t border-[#444]">
         {creating ? (
-          <div style={{ display: "flex", gap: 6 }}>
+          <div className="flex gap-1.5">
             <input
               autoFocus
               value={roomName}
@@ -96,27 +73,11 @@ export function RoomSidebar({
                 if (e.key === "Escape") setCreating(false);
               }}
               placeholder="Room name"
-              style={{
-                flex: 1,
-                padding: "0.4rem 0.5rem",
-                borderRadius: 6,
-                border: "1px solid #555",
-                background: "#3d3d3a",
-                color: "#fff",
-                fontSize: 13,
-              }}
+              className="flex-1 px-2 py-[0.4rem] rounded-md border border-[#555] bg-[#3d3d3a] text-white text-[13px]"
             />
             <button
               onClick={handleCreate}
-              style={{
-                padding: "0.4rem 0.6rem",
-                borderRadius: 6,
-                border: "none",
-                background: "#534AB7",
-                color: "#fff",
-                cursor: "pointer",
-                fontSize: 13,
-              }}
+              className="px-[0.6rem] py-[0.4rem] rounded-md border-none bg-[#534AB7] text-white cursor-pointer text-[13px]"
             >
               +
             </button>
@@ -124,36 +85,17 @@ export function RoomSidebar({
         ) : (
           <button
             onClick={() => setCreating(true)}
-            style={{
-              width: "100%",
-              padding: "0.5rem",
-              borderRadius: 6,
-              border: "1px dashed #555",
-              background: "transparent",
-              color: "#888",
-              cursor: "pointer",
-              fontSize: 13,
-            }}
+            className="w-full p-2 rounded-md border border-dashed border-[#555] bg-transparent text-[#888] cursor-pointer text-[13px]"
           >
             + New room
           </button>
         )}
       </div>
 
-      {/* Logout */}
-      <div style={{ padding: "0.75rem", borderTop: "1px solid #444" }}>
+      <div className="p-3 border-t border-[#444]">
         <button
           onClick={logout}
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            borderRadius: 6,
-            border: "none",
-            background: "#3d3d3a",
-            color: "#aaa",
-            cursor: "pointer",
-            fontSize: 13,
-          }}
+          className="w-full p-2 rounded-md border-none bg-[#3d3d3a] text-[#aaa] cursor-pointer text-[13px]"
         >
           Sign out
         </button>

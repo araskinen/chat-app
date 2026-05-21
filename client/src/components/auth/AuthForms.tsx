@@ -25,21 +25,14 @@ export function AuthForms() {
     onChange: (v: string) => void,
     type = "text",
   ) => (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-      <label style={{ fontSize: 13, fontWeight: 500, color: "#555" }}>
-        {label}
-      </label>
+    <div className="flex flex-col gap-1">
+      <label className="text-[13px] font-medium text-[#555]">{label}</label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required
-        style={{
-          padding: "0.6rem 0.75rem",
-          borderRadius: 8,
-          border: "1px solid #ddd",
-          fontSize: 14,
-        }}
+        className="px-3 py-[0.6rem] rounded-lg border border-[#ddd] text-sm"
       />
     </div>
   );
@@ -52,49 +45,20 @@ export function AuthForms() {
   }
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#f5f5f3",
-      }}
-    >
-      <div
-        style={{
-          width: 360,
-          background: "#fff",
-          borderRadius: 16,
-          padding: "2rem",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
-        }}
-      >
-        <h1 style={{ margin: "0 0 0.25rem", fontSize: 22, fontWeight: 500 }}>
-          💬 ChatApp
-        </h1>
-        <p style={{ margin: "0 0 1.5rem", color: "#888", fontSize: 14 }}>
+    <div className="min-h-screen flex items-center justify-center bg-[#f5f5f3]">
+      <div className="w-[360px] bg-white rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
+        <h1 className="m-0 mb-1 text-[22px] font-medium">💬 ChatApp</h1>
+        <p className="m-0 mb-6 text-[#888] text-sm">
           {mode === "login" ? "Sign in to continue" : "Create your account"}
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           {mode === "register" && field("Username", username, setUsername)}
           {field("Email", email, setEmail, "email")}
           {field("Password", password, setPassword, "password")}
 
           {error && (
-            <div
-              style={{
-                padding: "0.5rem 0.75rem",
-                background: "#FCEBEB",
-                color: "#A32D2D",
-                borderRadius: 8,
-                fontSize: 13,
-              }}
-            >
+            <div className="px-3 py-2 bg-[#FCEBEB] text-[#A32D2D] rounded-lg text-[13px]">
               {error}
             </div>
           )}
@@ -102,30 +66,13 @@ export function AuthForms() {
           <button
             type="submit"
             disabled={isLoading}
-            style={{
-              padding: "0.7rem",
-              borderRadius: 8,
-              border: "none",
-              background: "#534AB7",
-              color: "#fff",
-              fontWeight: 500,
-              fontSize: 15,
-              cursor: "pointer",
-              marginTop: 4,
-            }}
+            className="py-[0.7rem] rounded-lg border-none bg-[#534AB7] text-white font-medium text-[15px] cursor-pointer mt-1"
           >
             {submitButtonLabel}
           </button>
         </form>
 
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: "1.25rem",
-            fontSize: 13,
-            color: "#888",
-          }}
-        >
+        <p className="text-center mt-5 text-[13px] text-[#888]">
           {mode === "login"
             ? "Don't have an account? "
             : "Already have an account? "}
@@ -134,14 +81,7 @@ export function AuthForms() {
               setMode(mode === "login" ? "register" : "login");
               clearError();
             }}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#534AB7",
-              cursor: "pointer",
-              fontWeight: 500,
-              fontSize: 13,
-            }}
+            className="bg-transparent border-none text-[#534AB7] cursor-pointer font-medium text-[13px]"
           >
             {mode === "login" ? "Sign up" : "Sign in"}
           </button>

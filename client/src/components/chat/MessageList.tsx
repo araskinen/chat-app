@@ -16,73 +16,36 @@ export function MessageList({ messages, typingUsers }: Props) {
   }, [messages]);
 
   return (
-    <div
-      style={{
-        flex: 1,
-        overflowY: "auto",
-        padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.5rem",
-      }}
-    >
+    <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
       {messages.map((msg) => {
         const isOwn = msg.sender._id === currentUser?._id;
         return (
           <div
             key={msg._id}
-            style={{
-              display: "flex",
-              justifyContent: isOwn ? "flex-end" : "flex-start",
-            }}
+            className={`flex ${isOwn ? "justify-end" : "justify-start"}`}
           >
             {!isOwn && (
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: "50%",
-                  background: "#7F77DD",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 13,
-                  fontWeight: 500,
-                  marginRight: 8,
-                  flexShrink: 0,
-                }}
-              >
+              <div className="w-8 h-8 rounded-full bg-[#7F77DD] text-white flex items-center justify-center text-[13px] font-medium mr-2 shrink-0">
                 {msg.sender.username[0].toUpperCase()}
               </div>
             )}
-            <div style={{ maxWidth: "70%" }}>
+            <div className="max-w-[70%]">
               {!isOwn && (
-                <div style={{ fontSize: 12, color: "#888", marginBottom: 2 }}>
+                <div className="text-xs text-[#888] mb-0.5">
                   {msg.sender.username}
                 </div>
               )}
               <div
-                style={{
-                  padding: "0.5rem 0.75rem",
-                  borderRadius: isOwn
-                    ? "12px 12px 4px 12px"
-                    : "12px 12px 12px 4px",
-                  background: isOwn ? "#534AB7" : "#f0f0f0",
-                  color: isOwn ? "#fff" : "#222",
-                  fontSize: 14,
-                  lineHeight: 1.5,
-                }}
+                className={`px-3 py-2 text-sm leading-normal ${
+                  isOwn
+                    ? "bg-[#534AB7] text-white rounded-[12px_12px_4px_12px]"
+                    : "bg-[#f0f0f0] text-[#222] rounded-[12px_12px_12px_4px]"
+                }`}
               >
                 {msg.content}
               </div>
               <div
-                style={{
-                  fontSize: 11,
-                  color: "#aaa",
-                  marginTop: 2,
-                  textAlign: isOwn ? "right" : "left",
-                }}
+                className={`text-[11px] text-[#aaa] mt-0.5 ${isOwn ? "text-right" : "text-left"}`}
               >
                 {new Date(msg.createdAt).toLocaleTimeString([], {
                   hour: "2-digit",
@@ -95,7 +58,7 @@ export function MessageList({ messages, typingUsers }: Props) {
       })}
 
       {typingUsers.length > 0 && (
-        <div style={{ fontSize: 12, color: "#888", fontStyle: "italic" }}>
+        <div className="text-xs text-[#888] italic">
           {typingUsers.join(", ")} {typingUsers.length === 1 ? "is" : "are"}{" "}
           typing…
         </div>

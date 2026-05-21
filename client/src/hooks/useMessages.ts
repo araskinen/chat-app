@@ -1,5 +1,5 @@
-import { useEffect, useRef, useCallback } from "react";
-import { messagesApi } from "@/services/api";
+import { useEffect, useRef, useCallback, useState } from "react";
+import { messagesApi, getErrorMessage } from "@/services/api";
 import { getSocket } from "@/services/socket";
 import { useChatStore } from "@/store/chatStore";
 
@@ -14,11 +14,15 @@ export function useMessages(roomId: string | null) {
     roomId ? (s.typingUsers[roomId] ?? []) : [],
   );
   const typingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // Load message history when room changes
   useEffect(() => {
     if (!roomId) return;
-    messagesApi.list(roomId).then((msgs) => setMessages(roomId, msgs));
+    setError(null);
+    messagesApi
+      .list(roomId)
+      .then((msgs) => setMessages(roomId, msgs))
+      .catch((err) => setError(getErrorMessage(err, "Failed to load messages")));
   }, [roomId, setMessages]);
 
   const sendMessage = useCallback(
@@ -40,5 +44,5 @@ export function useMessages(roomId: string | null) {
     }, TYPING_DEBOUNCE_MS);
   }, [roomId]);
 
-  return { messages, typingUsers, sendMessage, onTyping };
+  return { messages, typingUsers, sendMessage, onTyping, error };
 }

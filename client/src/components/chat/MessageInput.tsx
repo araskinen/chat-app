@@ -23,14 +23,7 @@ export function MessageInput({ onSend, onTyping, disabled }: Props) {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 8,
-        padding: "0.75rem 1rem",
-        borderTop: "1px solid #e5e5e5",
-      }}
-    >
+    <div className="flex gap-2 px-4 py-3 border-t border-[#e5e5e5]">
       <textarea
         value={value}
         onChange={(e) => {
@@ -41,30 +34,12 @@ export function MessageInput({ onSend, onTyping, disabled }: Props) {
         disabled={disabled}
         placeholder="Type a message… (Enter to send)"
         rows={1}
-        style={{
-          flex: 1,
-          padding: "0.5rem 0.75rem",
-          borderRadius: 8,
-          border: "1px solid #ddd",
-          resize: "none",
-          fontSize: 14,
-          fontFamily: "inherit",
-          lineHeight: 1.5,
-        }}
+        className="flex-1 px-3 py-2 rounded-lg border border-[#ddd] resize-none text-sm leading-normal"
       />
       <button
         onClick={submit}
         disabled={disabled || !value.trim()}
-        style={{
-          padding: "0 1.25rem",
-          borderRadius: 8,
-          border: "none",
-          background: "#534AB7",
-          color: "#fff",
-          fontWeight: 500,
-          cursor: "pointer",
-          fontSize: 14,
-        }}
+        className="px-5 rounded-lg border-none bg-[#534AB7] text-white font-medium cursor-pointer text-sm"
       >
         Send
       </button>

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { User, LoginPayload, RegisterPayload } from "@/types";
-import { authApi } from "@/services/api";
+import { authApi, getErrorMessage } from "@/services/api";
 import { connectSocket, disconnectSocket } from "@/services/socket";
 
 interface AuthState {
@@ -32,7 +32,7 @@ export const useAuthStore = create<AuthState>()(
           connectSocket(token);
           set({ user, token, isLoading: false });
         } catch (err: unknown) {
-          const msg = err instanceof Error ? err.message : "Login failed";
+          const msg = getErrorMessage(err, "Login failed");
           set({ error: msg, isLoading: false });
         }
       },
@@ -45,8 +45,7 @@ export const useAuthStore = create<AuthState>()(
           connectSocket(token);
           set({ user, token, isLoading: false });
         } catch (err: unknown) {
-          const msg =
-            err instanceof Error ? err.message : "Registration failed";
+          const msg = getErrorMessage(err, "Registration failed");
           set({ error: msg, isLoading: false });
         }
       },
