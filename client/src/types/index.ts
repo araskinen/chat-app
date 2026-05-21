@@ -1,4 +1,4 @@
-// ─── Domain types shared across components, stores, and services ───────────
+// Domain types shared across the app
 
 export interface User {
   _id: string;
@@ -25,7 +25,7 @@ export interface Message {
   createdAt: string;
 }
 
-// ─── Auth ───────────────────────────────────────────────────────────────────
+// Auth
 
 export interface AuthResponse {
   token: string;
@@ -43,7 +43,7 @@ export interface RegisterPayload {
   password: string;
 }
 
-// ─── Socket events ──────────────────────────────────────────────────────────
+// Socket
 
 export interface TypingPayload {
   roomId: string;
