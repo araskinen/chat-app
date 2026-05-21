@@ -5,7 +5,13 @@ import { CreateRoomForm } from "./CreateRoomForm";
 import { SidebarFooter } from "./SidebarFooter";
 
 export const RoomSidebar = () => {
-  const { rooms, activeRoomId, roomsError, handleSelectRoom, handleCreateRoom } = useRooms();
+  const {
+    rooms,
+    activeRoomId,
+    roomsError,
+    handleSelectRoom,
+    handleCreateRoom,
+  } = useRooms();
   return (
     <aside className="w-60 bg-[#2C2C2A] text-[#D3D1C7] flex flex-col shrink-0">
       <SidebarHeader />

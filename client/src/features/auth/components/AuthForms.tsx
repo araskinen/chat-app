@@ -6,9 +6,12 @@ import { AuthModeToggle } from "./AuthModeToggle";
 export const AuthForms = () => {
   const {
     mode,
-    username, setUsername,
-    email, setEmail,
-    password, setPassword,
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
     isLoading,
     error,
     submitLabel,
@@ -23,10 +26,24 @@ export const AuthForms = () => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           {mode === "register" && (
-            <FormField label="Username" value={username} onChange={setUsername} />
+            <FormField
+              label="Username"
+              value={username}
+              onChange={setUsername}
+            />
           )}
-          <FormField label="Email" value={email} onChange={setEmail} type="email" />
-          <FormField label="Password" value={password} onChange={setPassword} type="password" />
+          <FormField
+            label="Email"
+            value={email}
+            onChange={setEmail}
+            type="email"
+          />
+          <FormField
+            label="Password"
+            value={password}
+            onChange={setPassword}
+            type="password"
+          />
 
           {error && (
             <div className="px-3 py-2 bg-[#FCEBEB] text-[#A32D2D] rounded-lg text-[13px]">

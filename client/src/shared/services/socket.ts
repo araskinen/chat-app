@@ -34,16 +34,16 @@ export const getSocket = () => {
     });
   }
   return socket;
-}
+};
 
 export const connectSocket = (token: string) => {
   const s = getSocket();
   s.auth = { token };
   if (!s.connected) s.connect();
   return s;
-}
+};
 
 export const disconnectSocket = () => {
   socket?.disconnect();
   socket = null;
-}
+};

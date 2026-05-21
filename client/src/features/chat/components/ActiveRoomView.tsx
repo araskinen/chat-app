@@ -6,8 +6,11 @@ import { MessageInput } from "./MessageInput";
 
 export const ActiveRoomView = () => {
   const activeRoomId = useChatStore((s) => s.activeRoomId);
-  const activeRoom = useChatStore((s) => s.rooms.find((r) => r._id === activeRoomId));
-  const { messages, typingUsers, sendMessage, onTyping, error } = useMessages(activeRoomId);
+  const activeRoom = useChatStore((s) =>
+    s.rooms.find((r) => r._id === activeRoomId),
+  );
+  const { messages, typingUsers, sendMessage, onTyping, error } =
+    useMessages(activeRoomId);
 
   if (!activeRoom) {
     return (

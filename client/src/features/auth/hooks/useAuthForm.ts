@@ -32,9 +32,12 @@ export const useAuthForm = () => {
 
   return {
     mode,
-    username, setUsername,
-    email, setEmail,
-    password, setPassword,
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
     isLoading,
     error,
     submitLabel,

@@ -22,7 +22,9 @@ export const useMessages = (roomId: string | null) => {
     messagesApi
       .list(roomId)
       .then((msgs) => setMessages(roomId, msgs))
-      .catch((err) => setError(getErrorMessage(err, "Failed to load messages")));
+      .catch((err) =>
+        setError(getErrorMessage(err, "Failed to load messages")),
+      );
   }, [roomId, setMessages]);
 
   const sendMessage = useCallback(
@@ -45,4 +47,4 @@ export const useMessages = (roomId: string | null) => {
   }, [roomId]);
 
   return { messages, typingUsers, sendMessage, onTyping, error };
-}
+};

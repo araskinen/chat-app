@@ -34,5 +34,11 @@ export const useRooms = () => {
     }
   };
 
-  return { rooms, activeRoomId, roomsError, handleSelectRoom, handleCreateRoom };
+  return {
+    rooms,
+    activeRoomId,
+    roomsError,
+    handleSelectRoom,
+    handleCreateRoom,
+  };
 };

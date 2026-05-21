@@ -6,7 +6,7 @@ export const getErrorMessage = (err: unknown, fallback: string): string => {
     return serverMsg ?? err.message;
   }
   return err instanceof Error ? err.message : fallback;
-}
+};
 
 import type {
   AuthResponse,

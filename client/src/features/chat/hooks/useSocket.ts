@@ -31,4 +31,4 @@ export const useSocket = () => {
       socket.off("error");
     };
   }, [addMessage, setTyping]);
-}
+};

@@ -11,7 +11,6 @@ export const ChatPage = () => {
       <main className="flex-1 flex flex-col overflow-hidden">
         <ActiveRoomView />
       </main>
-
     </div>
   );
-}
+};
