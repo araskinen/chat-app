@@ -1,4 +1,5 @@
 import { useState, type KeyboardEvent } from "react";
+import { SendButton } from "./SendButton";
 
 interface Props {
   onSend: (content: string) => void;
@@ -36,13 +37,7 @@ export const MessageInput = ({ onSend, onTyping, disabled }: Props) => {
         rows={1}
         className="flex-1 px-3 py-2 rounded-lg border border-[#ddd] resize-none text-sm leading-normal"
       />
-      <button
-        onClick={submit}
-        disabled={disabled || !value.trim()}
-        className="px-5 rounded-lg border-none bg-[#534AB7] text-white font-medium cursor-pointer text-sm"
-      >
-        Send
-      </button>
+      <SendButton onClick={submit} disabled={disabled || !value.trim()} />
     </div>
   );
-}
+};
