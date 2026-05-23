@@ -10,7 +10,7 @@ interface AuthSocket extends Socket {
 }
 
 export function registerSocketHandlers(io: Server) {
-  // ── Authenticate every socket connection ──────────────────────────────────
+  // Authenticate every socket connection
   io.use(async (socket: AuthSocket, next) => {
     const token = socket.handshake.auth?.token as string | undefined;
     if (!token) return next(new Error("Authentication required"));
@@ -30,7 +30,7 @@ export function registerSocketHandlers(io: Server) {
   io.on("connection", (socket: AuthSocket) => {
     console.log(`🔌 ${socket.username} connected (${socket.id})`);
 
-    // ── Join room ────────────────────────────────────────────────────────────
+    // Join room
     socket.on("room:join", (roomId: string) => {
       socket.join(roomId);
       socket.to(roomId).emit("room:user-joined", {
@@ -39,7 +39,7 @@ export function registerSocketHandlers(io: Server) {
       });
     });
 
-    // ── Leave room ───────────────────────────────────────────────────────────
+    // Leave room
     socket.on("room:leave", (roomId: string) => {
       socket.leave(roomId);
       socket.to(roomId).emit("room:user-left", {
@@ -48,7 +48,7 @@ export function registerSocketHandlers(io: Server) {
       });
     });
 
-    // ── Send message ─────────────────────────────────────────────────────────
+    // Send message
     socket.on(
       "message:send",
       async ({ roomId, content }: { roomId: string; content: string }) => {
@@ -75,7 +75,7 @@ export function registerSocketHandlers(io: Server) {
       },
     );
 
-    // ── Typing indicators ────────────────────────────────────────────────────
+    // Typing indicators
     socket.on("typing:start", (roomId: string) => {
       socket.to(roomId).emit("user:typing", {
         username: socket.username!,
@@ -90,7 +90,7 @@ export function registerSocketHandlers(io: Server) {
       });
     });
 
-    // ── Disconnect ───────────────────────────────────────────────────────────
+    // Disconnect
     socket.on("disconnect", () => {
       console.log(`🔌 ${socket.username} disconnected`);
     });
