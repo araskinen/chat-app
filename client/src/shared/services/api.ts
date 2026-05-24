@@ -28,7 +28,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// ─── Auth ────────────────────────────────────────────────────────────────────
+// Auth
 export const authApi = {
   login: (payload: LoginPayload) =>
     api.post<AuthResponse>("/auth/login", payload).then((r) => r.data),
@@ -39,7 +39,7 @@ export const authApi = {
   me: () => api.get<AuthResponse["user"]>("/auth/me").then((r) => r.data),
 };
 
-// ─── Rooms ───────────────────────────────────────────────────────────────────
+// Rooms
 export const roomsApi = {
   list: () => api.get<Room[]>("/rooms").then((r) => r.data),
 
@@ -50,7 +50,7 @@ export const roomsApi = {
     api.post<Room>(`/rooms/${roomId}/join`).then((r) => r.data),
 };
 
-// ─── Messages ────────────────────────────────────────────────────────────────
+// Messages
 export const messagesApi = {
   list: (roomId: string, page = 1) =>
     api

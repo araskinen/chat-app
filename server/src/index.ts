@@ -12,11 +12,11 @@ import { errorHandler } from "./middleware/errorHandler";
 import { registerSocketHandlers } from "./socket/socketHandler";
 
 async function bootstrap() {
-  // ── Connect to external services ──────────────────────────────────────────
+  // Connect to external services
   await connectDB();
   await connectRedis();
 
-  // ── Express app ───────────────────────────────────────────────────────────
+  // Express app
   const app = express();
 
   app.use(cors({ origin: env.corsOrigins, credentials: true }));
@@ -28,7 +28,7 @@ async function bootstrap() {
   app.use("/api/messages", messagesRouter);
   app.use(errorHandler);
 
-  // ── HTTP + Socket.IO server ───────────────────────────────────────────────
+  // HTTP + Socket.IO server
   const httpServer = http.createServer(app);
 
   const io = new Server(httpServer, {
@@ -40,7 +40,7 @@ async function bootstrap() {
 
   registerSocketHandlers(io);
 
-  // ── Listen ────────────────────────────────────────────────────────────────
+  // Listen
   httpServer.listen(env.port, () => {
     console.log(`🚀 Server running on port ${env.port}`);
   });

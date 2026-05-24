@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client";
 
-// ─── Typed event maps ────────────────────────────────────────────────────────
+// Typed event maps
 
 export interface ServerToClientEvents {
   "message:new": (message: import("@/shared/types").Message) => void;
@@ -22,7 +22,7 @@ export interface ClientToServerEvents {
   "typing:stop": (roomId: string) => void;
 }
 
-// ─── Singleton ───────────────────────────────────────────────────────────────
+// Singleton
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents> | null = null;
 
