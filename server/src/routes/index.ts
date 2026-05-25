@@ -4,7 +4,7 @@ import * as rooms from "../controllers/roomController";
 import * as messages from "../controllers/messageController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
-// Auth 
+// Auth
 export const authRouter = Router();
 authRouter.post("/register", auth.register);
 authRouter.post("/login", auth.login);

@@ -18,9 +18,7 @@ export const MessageItem = ({ message: msg }: Props) => {
       )}
       <div className="max-w-[70%]">
         {!isOwn && (
-          <div className="text-xs text-muted mb-0.5">
-            {msg.sender.username}
-          </div>
+          <div className="text-xs text-muted mb-0.5">{msg.sender.username}</div>
         )}
         <div
           className={`px-3 py-2 text-sm leading-normal ${
