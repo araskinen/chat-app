@@ -36,7 +36,11 @@ export async function createRoom(
       members: [req.userId],
     });
     res.status(201).json(room);
-  } catch (err) {
+  } catch (err: any) {
+    if (err.code === 11000) {
+      res.status(409).json({ message: "A room with that name already exists" });
+      return;
+    }
     next(err);
   }
 }
