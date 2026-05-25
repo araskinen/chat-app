@@ -1,7 +1,7 @@
 # railway.toml — drop this in the /server directory before deploying to Railway
 [build]
-builder = "NIXPACKS"
-buildCommand = "npm install && npm run build"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 startCommand = "npm start"
