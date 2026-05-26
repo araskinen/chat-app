@@ -5,7 +5,7 @@ import * as messages from "../controllers/messageController";
 import { authMiddleware } from "../middleware/authMiddleware";
 import { authLimiter } from "../middleware/rateLimiter";
 
-// Auth 
+// Auth
 export const authRouter = Router();
 authRouter.post("/register", authLimiter, auth.register);
 authRouter.post("/login", authLimiter, auth.login);

@@ -106,13 +106,11 @@ describe("register", () => {
       token: "jwt-token",
     });
 
-    await useAuthStore
-      .getState()
-      .register({
-        username: "alice",
-        email: "alice@example.com",
-        password: "pass",
-      });
+    await useAuthStore.getState().register({
+      username: "alice",
+      email: "alice@example.com",
+      password: "pass",
+    });
 
     expect(useAuthStore.getState().user).toEqual(mockUser);
     expect(useAuthStore.getState().token).toBe("jwt-token");
@@ -123,13 +121,11 @@ describe("register", () => {
       new Error("Email taken"),
     );
 
-    await useAuthStore
-      .getState()
-      .register({
-        username: "alice",
-        email: "alice@example.com",
-        password: "pass",
-      });
+    await useAuthStore.getState().register({
+      username: "alice",
+      email: "alice@example.com",
+      password: "pass",
+    });
 
     expect(useAuthStore.getState().error).toBe("Email taken");
   });
