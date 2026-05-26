@@ -13,5 +13,10 @@ RUN npm run build --workspace=client
 
 FROM nginx:alpine AS runner
 COPY --from=builder /app/client/dist /usr/share/nginx/html
-COPY client/nginx.conf /etc/nginx/conf.d/default.conf
+COPY client/nginx.conf /etc/nginx/conf.d/default.conf.template
+ARG VITE_API_URL=http://localhost:8080
+ARG VITE_SOCKET_URL=http://localhost:8080
+RUN envsubst '${VITE_API_URL} ${VITE_SOCKET_URL}' \
+    < /etc/nginx/conf.d/default.conf.template \
+    > /etc/nginx/conf.d/default.conf
 EXPOSE 80
