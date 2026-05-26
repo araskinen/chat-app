@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 import cors from "cors";
 import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
@@ -24,6 +25,7 @@ async function bootstrap() {
   app.use(helmet());
   app.use(cors({ origin: env.corsOrigins, credentials: true }));
   app.use(express.json({ limit: "10kb" }));
+  app.use(mongoSanitize());
 
   app.use("/api", apiLimiter);
 
