@@ -3,11 +3,12 @@ import * as auth from "../controllers/authController";
 import * as rooms from "../controllers/roomController";
 import * as messages from "../controllers/messageController";
 import { authMiddleware } from "../middleware/authMiddleware";
+import { authLimiter } from "../middleware/rateLimiter";
 
 // Auth 
 export const authRouter = Router();
-authRouter.post("/register", auth.register);
-authRouter.post("/login", auth.login);
+authRouter.post("/register", authLimiter, auth.register);
+authRouter.post("/login", authLimiter, auth.login);
 authRouter.get("/me", authMiddleware, auth.me);
 
 // Rooms

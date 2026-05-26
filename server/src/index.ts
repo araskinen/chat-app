@@ -1,5 +1,6 @@
 import express from "express";
 import http from "http";
+import helmet from "helmet";
 import cors from "cors";
 import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
@@ -9,6 +10,7 @@ import { connectDB } from "./config/db";
 import { connectRedis, pubClient, subClient } from "./config/redis";
 import { authRouter, roomsRouter, messagesRouter } from "./routes/index";
 import { errorHandler } from "./middleware/errorHandler";
+import { apiLimiter } from "./middleware/rateLimiter";
 import { registerSocketHandlers } from "./socket/socketHandler";
 
 async function bootstrap() {
@@ -19,8 +21,11 @@ async function bootstrap() {
   // Express app
   const app = express();
 
+  app.use(helmet());
   app.use(cors({ origin: env.corsOrigins, credentials: true }));
   app.use(express.json());
+
+  app.use("/api", apiLimiter);
 
   app.get("/healthz", (_req, res) => res.json({ status: "ok" }));
   app.use("/api/auth", authRouter);
