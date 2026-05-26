@@ -2,6 +2,7 @@ import express from "express";
 import http from "http";
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
+import morgan from "morgan";
 import cors from "cors";
 import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
@@ -21,8 +22,10 @@ async function bootstrap() {
 
   // Express app
   const app = express();
+  app.set("trust proxy", 1);
 
   app.use(helmet());
+  app.use(morgan(env.nodeEnv === "production" ? "combined" : "dev"));
   app.use(cors({ origin: env.corsOrigins, credentials: true }));
   app.use(express.json({ limit: "10kb" }));
   app.use(mongoSanitize());

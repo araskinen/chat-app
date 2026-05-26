@@ -7,6 +7,7 @@ function required(key: string): string {
 }
 
 export const env = {
+  nodeEnv: process.env["NODE_ENV"] ?? "development",
   port: parseInt(process.env["PORT"] ?? "4000", 10),
   mongoUri: required("MONGODB_URI"),
   redisUrl: required("REDIS_URL"),
